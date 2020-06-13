@@ -1,0 +1,10 @@
+C:\Users\gusta\source\repos\ProblemaPmedianasCapacitado\ProblemaPmedianasCapacitado\bin\Debug\ProblemaPmedianasCapacitado.exe.config
+C:\Users\gusta\source\repos\ProblemaPmedianasCapacitado\ProblemaPmedianasCapacitado\bin\Debug\ProblemaPmedianasCapacitado.exe
+C:\Users\gusta\source\repos\ProblemaPmedianasCapacitado\ProblemaPmedianasCapacitado\bin\Debug\ProblemaPmedianasCapacitado.pdb
+C:\Users\gusta\source\repos\ProblemaPmedianasCapacitado\ProblemaPmedianasCapacitado\obj\Debug\ProblemaPmedianasCapacitado.csprojAssemblyReference.cache
+C:\Users\gusta\source\repos\ProblemaPmedianasCapacitado\ProblemaPmedianasCapacitado\obj\Debug\ProblemaPmedianasCapacitado.Form1.resources
+C:\Users\gusta\source\repos\ProblemaPmedianasCapacitado\ProblemaPmedianasCapacitado\obj\Debug\ProblemaPmedianasCapacitado.Properties.Resources.resources
+C:\Users\gusta\source\repos\ProblemaPmedianasCapacitado\ProblemaPmedianasCapacitado\obj\Debug\ProblemaPmedianasCapacitado.csproj.GenerateResource.cache
+C:\Users\gusta\source\repos\ProblemaPmedianasCapacitado\ProblemaPmedianasCapacitado\obj\Debug\ProblemaPmedianasCapacitado.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\ProblemaPmedianasCapacitado\ProblemaPmedianasCapacitado\obj\Debug\ProblemaPmedianasCapacitado.exe
+C:\Users\gusta\source\repos\ProblemaPmedianasCapacitado\ProblemaPmedianasCapacitado\obj\Debug\ProblemaPmedianasCapacitado.pdb
