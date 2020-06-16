@@ -53,10 +53,10 @@ namespace ProblemaPmedianasCapacitado
         }
         public void Metodo1()
         {
-            bool FezShift = true;
-            while (FezShift)
+            int Vizinhanca = 1;
+            while (Vizinhanca<=2)
             {
-                FezShift = false;                
+                Vizinhanca = 2;
                 for(int i=0;i<NumeroItens;i++)
                 {
                     for(int p=0;p<NumeroMedianas;p++)
@@ -64,26 +64,76 @@ namespace ProblemaPmedianasCapacitado
                         if (DeltaShiftItem(i, p)<0)
                         {
                             ShiftItem(i, p);
-                            FezShift = true;
+                            Vizinhanca = 1;
                             TrocarMedianaDoGrupoParaMelhor(p);
                         }
                     }
                 }
-                if(!FezShift)
+                if (Vizinhanca == 2)
                 {
-                    for(int i1=0;i1<NumeroItens;i1++)
+                    Vizinhanca = 3;
+                    for (int i1 = 0; i1 < NumeroItens; i1++)
                     {
-                        for(int i2=0;i2<NumeroItens;i2++)
+                        for (int i2 = 0; i2 < NumeroItens; i2++)
                         {
-                            if(DeltaExchangeItens(i1,i2)<0)
+                            if (DeltaExchangeItens(i1, i2) < 0)
                             {
                                 ExchangeItens(i1, i2);
-                                FezShift = true;
+                                Vizinhanca = 1;
                             }
                         }
                     }
                 }
             }
+        }
+        public void Metodo1Alternativo()
+        {
+            int Vizinhanca = 1;
+            while (Vizinhanca <= 2)
+            {
+                Vizinhanca = 2;
+                if (VizinhancaShift())
+                    Vizinhanca = 1;
+                if (Vizinhanca == 2)
+                {
+                    Vizinhanca = 3;
+                    if (VizinhancaDelta())
+                        Vizinhanca = 1;
+                }
+            }
+        }
+        public bool VizinhancaShift()
+        {
+            bool TrocouSolucao = false;
+            for (int i = 0; i < NumeroItens; i++)
+            {
+                for (int p = 0; p < NumeroMedianas; p++)
+                {
+                    if (DeltaShiftItem(i, p) < 0)
+                    {
+                        ShiftItem(i, p);
+                        TrocouSolucao = true;
+                        TrocarMedianaDoGrupoParaMelhor(p);
+                    }
+                }
+            }
+            return TrocouSolucao;
+        }
+        public bool VizinhancaDelta()
+        {
+            bool TrocouSolucao = false;
+            for (int i1 = 0; i1 < NumeroItens; i1++)
+            {
+                for (int i2 = 0; i2 < NumeroItens; i2++)
+                {
+                    if (DeltaExchangeItens(i1, i2) < 0)
+                    {
+                        ExchangeItens(i1, i2);
+                        TrocouSolucao = true;
+                    }
+                }
+            }
+            return TrocouSolucao;
         }
         public double DeltaInserirItemNaMediana(int _item, int _mediana)
         {
@@ -200,8 +250,8 @@ namespace ProblemaPmedianasCapacitado
             for(int i=0;i<_nPontos;i++)
             {
                 Itens[i] = new Item();
-                Itens[i].X = Aleatorio.Next(5, 595);
-                Itens[i].Y = Aleatorio.Next(5, 595);
+                Itens[i].X = Aleatorio.Next(30, 570);
+                Itens[i].Y = Aleatorio.Next(30, 570);
             }
             for(int j=0;j<_nMedianas;j++)
             {
@@ -232,9 +282,12 @@ namespace ProblemaPmedianasCapacitado
         {
             Bitmap Desenho = new Bitmap(600, 600);
             Graphics g = Graphics.FromImage(Desenho);
+            g.FillRectangle(Brushes.White, 0, 0, 600, 600);
             int RaioMediana = 8;
             int RaioItem = 5;
-            for(int j=0;j<NumeroMedianas;j++)
+            Font drawFont = new Font("Arial", 7);
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            for (int j=0;j<NumeroMedianas;j++)
             {
                 int MedianaDesenhar = Medianas[j].ItemMediana;
                 Brush Pincel = new SolidBrush(Medianas[j].Cor);
@@ -243,6 +296,8 @@ namespace ProblemaPmedianasCapacitado
                 {
                     int ItemDesenhar = Medianas[j].ItensAlocados[i];
                     g.FillEllipse(Pincel, Itens[ItemDesenhar].X - RaioItem, Itens[ItemDesenhar].Y - RaioItem, 2 * RaioItem, 2 * RaioItem);
+                    string st = ItemDesenhar + ": (" + Itens[ItemDesenhar].X + "," + Itens[ItemDesenhar].Y + ")";
+                    g.DrawString(st, drawFont, drawBrush, Itens[ItemDesenhar].X - 6 * RaioItem, Itens[ItemDesenhar].Y - 3 * RaioItem);
                 }
             }
             return Desenho;
@@ -259,8 +314,6 @@ namespace ProblemaPmedianasCapacitado
     class Mediana
     {
         public double Distancia;
-        public double PesoTotal;
-        public double CapacidadePeso;
         public int ItemMediana;
         public Color Cor;
         public List<int> ItensAlocados;
@@ -269,7 +322,6 @@ namespace ProblemaPmedianasCapacitado
     {
         public int X;
         public int Y;
-        public int Peso;
         public int MedianaAlocada;
     }
 }

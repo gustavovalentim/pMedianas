@@ -22,7 +22,7 @@ namespace ProblemaPmedianasCapacitado
         private void btnpMedianas_Click(object sender, EventArgs e)
         {
             ProblemaPmedianas MeuProblema = new ProblemaPmedianas();
-            MeuProblema.GerarInstanciaAleatoria(150, 8);
+            MeuProblema.GerarInstanciaAleatoria(20, 3);
             MeuProblema.CalcularDistancias();
             //Stopwatch Cronometro = new Stopwatch();
             //Cronometro.Start();
@@ -32,7 +32,7 @@ namespace ProblemaPmedianasCapacitado
             pictureBox1.Image = MeuProblema.Desenhar();
             Application.DoEvents();
             System.Threading.Thread.Sleep(1500);
-            MeuProblema.Metodo1();
+            MeuProblema.Metodo1Alternativo();
             MeuProblema.CalcularDistanciaTotal();
             this.Text = MeuProblema.DistanciaTotal.ToString();
             pictureBox1.Image = MeuProblema.Desenhar();
